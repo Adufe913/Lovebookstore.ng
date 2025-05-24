@@ -1,15 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>LoveBookstore Login</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | LoveBookstore</title>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <h2>Login / Sign Up</h2>
-  <input type="email" id="email" placeholder="Enter Email" required><br>
-  <input type="password" id="password" placeholder="Enter Password" required><br>
-  <button onclick="login()">Login</button>
-  <button onclick="signup()">Sign Up</button>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+  <div class="bg-white p-6 rounded-2xl shadow-lg w-full max-w-md">
+    <h1 class="text-2xl font-bold text-center text-orange-600 mb-6">Welcome to LoveBookstore</h1>
+    
+    <div class="space-y-4">
+      <input type="email" id="email" placeholder="Email" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+      <input type="password" id="password" placeholder="Password" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+      
+      <div class="flex justify-between gap-4">
+        <button onclick="signup()" class="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded-xl w-full">
+          Sign Up
+        </button>
+        <button onclick="login()" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded-xl w-full">
+          Login
+        </button>
+      </div>
+    </div>
+
+    <p class="mt-6 text-sm text-center text-gray-500">Get ₦50 bonus when you sign up and follow us on TikTok!</p>
+  </div>
 
   <script>
     const SUPABASE_URL = 'https://sgjcwnpuxwlsvcyxgeug.supabase.co';
