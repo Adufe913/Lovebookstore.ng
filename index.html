@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LoveBookstore</title>
+  <style>
+    body { font-family: Arial; margin: 0; background: #f5f5f5; }
+    header { background: orange; padding: 1em; color: white; text-align: center; }
+    .book-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 10px;
+      padding: 1em;
+    }
+    .book {
+      background: white;
+      padding: 10px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 5px #ccc;
+    }
+    img { width: 100%; max-height: 200px; object-fit: cover; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>LoveBookstore</h1>
+  </header>
+  <div class="book-grid">
+    <div class="book">
+      <img src="https://i.postimg.cc/hGSFvnQK/Frontcover.jpg" alt="The Billionaire's Fake Fiancée">
+      <p><strong>The Billionaire's Fake Fiancée</strong></p>
+      <p>₦3,000</p>
+    </div>
+  </div>
+</body>
+</html>
