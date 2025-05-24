@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LoveBookstore Login</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+<body>
+  <h2>Login / Sign Up</h2>
+  <input type="email" id="email" placeholder="Enter Email" required><br>
+  <input type="password" id="password" placeholder="Enter Password" required><br>
+  <button onclick="login()">Login</button>
+  <button onclick="signup()">Sign Up</button>
+
+  <script>
+    const SUPABASE_URL = 'https://sgjcwnpuxwlsvcyxgeug.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNnamN3bnB1eHdsc3ZjeXhnZXVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgwNzUwOTgsImV4cCI6MjA2MzY1MTA5OH0.gaOEwDgzVGWLLW8_dVLkHduOMuA7P3EcwUcyQX-YXTY';
+    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    async function getIP() {
+      const res = await fetch("https://api.ipify.org?format=json");
+      const data = await res.json();
+      return data.ip;
+    }
+
+    async function signup() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      const { data, error } = await supabase.auth.signUp({ email, password });
+      if (error) return alert("Sign up error: " + error.message);
+
+      const ip = await getIP();
+
+      await supabase.from('users').insert({
+        user_id: data.user.id,
+        email: email,
+        ip_address: ip,
+        wallet_balance: 0,
+        bonus: 50,
+        tiktok_done: false,
+      });
+
+      alert("Signup successful! Bonus added. Please login.");
+    }
+
+    async function login() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) return alert("Login error: " + error.message);
+
+      window.location.href = "/dashboard.html";
+    }
+  </script>
+</body>
+</html>
